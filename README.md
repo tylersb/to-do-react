@@ -551,9 +551,12 @@ class MyList extends Component {
 
   addItem = (e) =>{
     e.preventDefault()
-    let newList = this.state.taskArray
-    newList.push(this.state.newItem)
-    this.setState({taskArray: newList, newItem:''})
+    this.setState(prevState => {
+    return {
+        taskArray: [...prevState.taskArray, prevState.newItem],
+        newItem: ''
+      }
+    })
   }
 
   render(){
